@@ -1,0 +1,1084 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400;500;600;700&display=swap');
+
+/* Override default Infima variables here */
+:root {
+  --ifm-color-primary: #a324b0;
+  --ifm-color-primary-dark: #93209e;
+  --ifm-color-primary-darker: #8b1f96;
+  --ifm-color-primary-darkest: #72197b;
+  --ifm-color-primary-light: #b328c2;
+  --ifm-color-primary-lighter: #bb29ca;
+  --ifm-color-primary-lightest: #c93cd7;
+  --ifm-heading-color: #333333;
+}
+
+/* Dark mode: use a lighter primary palette for readability */
+[data-theme='dark'] {
+  --ifm-color-primary: #cc36ff;
+  --ifm-color-primary-dark: #c417ff;
+  --ifm-color-primary-darker: #c008ff;
+  --ifm-color-primary-darkest: #a100d8;
+  --ifm-color-primary-light: #d455ff;
+  --ifm-color-primary-lighter: #d864ff;
+  --ifm-color-primary-lightest: #e493ff;
+  --ifm-heading-color: white;
+}
+
+/* ===================== BASE TABLE ===================== */
+
+/* Estilos para las tablas base */
+.base-table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 8px; /* Bordes redondeados para la tabla */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  border: 1px solid #d1d1d1; /* Borde gris claro para la tabla */
+  overflow: hidden; /* Asegura que las esquinas no se "corten" */
+}
+
+.base-table th,
+.base-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.base-table thead {
+  background-color: #f9f9f9;
+  color: black;
+  font-weight: bold;
+}
+
+.base-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.base-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.base-table td code {
+  background-color: #f1f1f1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Scrollbar personalizada */
+.base-table::-webkit-scrollbar {
+  width: 10px;
+}
+
+.base-table::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 6px;
+}
+
+.base-table::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+.base-table::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Estilos para el contenedor con scroll */
+.scroll-row {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-top: 8px;
+}
+
+@media (max-width: 992px) {
+  .base-table {
+    display: block;
+  }
+  .base-table td,
+  .base-table th {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ===================== PARAMETER TABLE (Subgrupo) ===================== */
+
+/* Estilos específicos para la tabla param-table */
+.param-table td:nth-child(1), 
+.param-table th:nth-child(1) {
+  white-space: nowrap;  /* No permite que el contenido se divida en varias líneas */
+  min-width: 250px;  /* Garantiza que las celdas de la columna 1 tengan un ancho fijo */
+  max-width: 250px;
+  text-overflow: ellipsis;  /* Añade puntos suspensivos si el contenido es demasiado largo */
+  overflow: hidden;  /* Evita el desbordamiento del contenido */
+}
+
+.param-table td:nth-child(1) code {
+  margin-left: 8px; /* Asegura que haya un pequeño espacio entre el icono y el código */
+}
+
+/* Icono */
+.param-table td:nth-child(1) .fa-icon {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+/* Column 2 */
+.param-table th:nth-child(2),
+.param-table td:nth-child(2) {
+  width: 550px;
+}
+
+/* Column 3 */
+.param-table th:nth-child(3),
+.param-table td:nth-child(3) {
+  min-width: 200px;
+  max-width: 200px;
+  text-align: right;
+}
+
+/* Column 3: fixed width and overflow control */
+.param-table td:nth-child(3),
+.param-table th:nth-child(3) {
+  overflow: hidden; /* prevent table from expanding */
+  text-align: right;
+}
+
+/* Ensure <code> doesn’t wrap and scrolls nicely inside container */
+.param-table .scroll-row code {
+  white-space: pre;    /* do not break the pattern */
+  display: inline;     /* stays on the same line with the label */
+}
+/* ===================== LONG TABLE (scroll horizontal) ===================== */
+
+/* Contenedor con scroll horizontal para tablas largas */
+.long-table-container {
+  overflow-x: auto; /* Habilita el scroll horizontal */
+  -webkit-overflow-scrolling: touch; /* Suaviza el desplazamiento en dispositivos móviles */
+  width: 100%;
+}
+
+/* Estilo para la tabla larga */
+.long-table {
+  width: max-content; /* Hace que la tabla se expanda dependiendo de las columnas */
+  min-width: 100%; /* Garantiza que la tabla ocupe todo el ancho disponible */
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  border: 1px solid #d1d1d1; /* Borde gris claro para la tabla */
+  overflow: hidden; /* Asegura que las esquinas no se "corten" */
+}
+
+/* Resto de los estilos de tabla (base-table ya hereda estos estilos) */
+.long-table th,
+.long-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.long-table thead {
+  background-color: #f9f9f9;
+  color: black;
+  font-weight: bold;
+}
+
+.long-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.long-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.long-table td code {
+  background-color: #f1f1f1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Scrollbar personalizada */
+.long-table::-webkit-scrollbar {
+  height: 10px; /* Scroll horizontal */
+}
+
+.long-table::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 6px;
+}
+
+.long-table::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+.long-table::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* ===================== TABLE DARK MODE ===================== */
+
+/* Dark mode: adapt the table to dark theme */
+html[data-theme='dark'] .base-table, 
+html[data-theme='dark'] .long-table {
+  background-color: var(--ifm-background-color);
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+
+html[data-theme='dark'] .base-table thead, 
+html[data-theme='dark'] .long-table thead {
+  background-color: #333333;
+  color: white;
+}
+
+html[data-theme='dark'] .base-table tbody tr:nth-child(even), 
+html[data-theme='dark'] .long-table tbody tr:nth-child(even) {
+  background-color: #333333;
+}
+
+html[data-theme='dark'] .base-table tbody tr:hover, 
+html[data-theme='dark'] .long-table tbody tr:hover {
+  background-color: #444;
+}
+
+html[data-theme='dark'] .base-table td code, 
+html[data-theme='dark'] .long-table td code {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Scrollbar personalizada (asegúrate de que el contenedor tenga overflow) */
+html[data-theme='dark'] .base-table::-webkit-scrollbar,
+html[data-theme='dark'] .long-table::-webkit-scrollbar {
+  width: 10px;
+}
+
+html[data-theme='dark'] .base-table::-webkit-scrollbar-thumb,
+html[data-theme='dark'] .long-table::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 6px;
+}
+
+/* ========================= SINGLE TABLE IN DEA ========================= */
+
+/* Estilos específicos para la tabla con la clase 'dea-one-row-third-column' */
+.dea-one-row-third-column td:nth-child(3),
+.dea-one-row-third-column th:nth-child(3) {
+  white-space: nowrap; /* No permite que el contenido de la tercera columna se divida en varias líneas */
+  overflow: hidden; /* Evita que el contenido se desborde de la celda */
+  text-overflow: ellipsis; /* Si el contenido es demasiado largo, muestra puntos suspensivos */
+  word-wrap: normal; /* Asegura que no se produzcan saltos de línea no deseados */
+  width: auto; /* Permite que la celda ocupe todo el espacio necesario */
+}
+
+/* Asegura que la tabla ocupe todo el ancho disponible */
+.dea-one-row-third-column {
+  table-layout: fixed; /* Fija el ancho de las celdas */
+  width: 100%; /* La tabla debe ocupar el 100% del contenedor */
+}
+
+/* ========================= SINGLE TABLE IN USAGE ========================= */
+
+/* Estilo específico para la tabla de Usage */
+.usage-table th:nth-child(1),
+.usage-table td:nth-child(1) {
+  min-width: 180px; /* Ajusta este valor al tamaño mínimo deseado */
+}
+
+/* ===================== FULL WIDTH STRETCH ===================== */
+
+
+/* Usamos un selector doble para aumentar la especificidad */
+table.base-table.full-width-table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+/* Forzamos a que las celdas internas se comporten como celdas de tabla */
+.full-width-table th,
+.full-width-table td {
+  display: table-cell !important;
+  width: auto !important;
+  vertical-align: middle;
+}
+
+/* Esto asegura que el modo oscuro no rompa el layout */
+html[data-theme='dark'] table.base-table.full-width-table {
+  display: table !important;
+}
+
+/* Ajuste de proporciones para tablas de dos columnas */
+.column-narrow-first th:nth-child(1),
+.column-narrow-first td:nth-child(1) {
+  width: 20% !important;
+}
+
+.column-narrow-first th:nth-child(2),
+.column-narrow-first td:nth-child(2) {
+  width: 80% !important;
+}
+
+/* ========================= BADGES ========================= */
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #000;
+  background: #f0f0f0;
+}
+
+/* Variants */
+.badge.required {
+  background: #ffe066;   /* attention-grabbing yellow */
+  color: #000;
+}
+
+/* ====================== GENERAL CONTENT ====================== */
+
+.markdown p {
+  text-align: justify;
+}
+
+/* ======================= GITHUB BUTTON ======================= */
+/* GitHub header button as icon (desktop) */
+
+.header-github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  transition: background var(--ifm-transition-fast);
+}
+
+.header-github-link:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.header-github-link::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23000000' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+/* Dark mode: white GitHub icon */
+html[data-theme='dark'] .header-github-link::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+}
+
+/* Mobile fallback: show "GitHub" text in the menu */
+@media screen and (max-width: 996px) {
+  .header-github-link {
+    width: auto;
+    padding: 0 8px;
+    margin-right: 10px;
+  }
+  .header-github-link::before {
+    content: 'GitHub';
+    width: auto;
+    height: auto;
+    background-image: none;
+  }
+}
+
+/* ========================== FOOTER ========================== */
+
+.footer {
+  background-color: #333333; /* light mode: dark gray */
+  color: #ffffff;
+}
+
+.footer a {
+  color: #ffffff;
+  transition: opacity .2s ease, color .2s ease;
+}
+
+.footer a:hover {
+  opacity: .85;
+}
+
+/* Dark mode: align with navbar background and theme link colors */
+html[data-theme='dark'] .footer {
+  background-color: var(--ifm-navbar-background-color);
+  color: var(--ifm-footer-link-color);
+}
+
+html[data-theme='dark'] .footer a {
+  color: var(--ifm-footer-link-color);
+}
+
+html[data-theme='dark'] .footer a:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* =================== THEME-DEPENDENT IMAGES =================== */
+
+/* Hide images depending on the active theme */
+
+html[data-theme='dark'] img[src$='#light-mode-only'] {
+  display: none;
+}
+
+html[data-theme='light'] img[src$='#dark-mode-only'] {
+  display: none;
+}
+
+html[data-theme='dark'] .light-mode-only {
+  display: none;
+}
+
+html[data-theme='light'] .dark-mode-only {
+  display: none;
+}
+
+/* =============================================================== */
+/* ====== SEARCH BUTTON (fixed, smooth animation, left text) ===== */
+/* =============================================================== */
+
+.navbar-search-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Main search button */
+.navbar-search-item button {
+  border-radius: 999px !important;
+  padding: 6px 16px !important;
+
+  /* Fixed size */
+  min-width: 230px;
+  max-width: 230px;
+  width: 230px;
+
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  background: var(--ifm-color-emphasis-0) !important;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* left-aligned text */
+  gap: 0.45rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    border-color 0.18s ease-out,
+    width 0.18s ease-out;
+}
+
+/* Micro-bounce hover */
+.navbar-search-item button:hover {
+  animation: microBounce 0.25s ease-out;
+  border-color: var(--ifm-color-primary) !important;
+}
+
+@keyframes microBounce {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* Slight inner-glow when focused */
+.navbar-search-item button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(163, 36, 176, 0.35);
+  transform: translateY(-2px);
+}
+
+
+/* Focus: stronger halo for accessibility */
+.navbar-search-item button:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px rgba(163, 36, 176, 0.45);
+  border-color: var(--ifm-color-primary) !important;
+}
+
+/* Search icon (light mode) */
+.navbar-search-item button svg {
+  width: 18px;
+  height: 18px;
+  opacity: 1;
+  color: var(--ifm-color-emphasis-300) !important;
+  fill: var(--ifm-color-emphasis-300) !important;
+}
+
+/* Inner text (light mode) */
+.navbar-search-item button span {
+  font-size: 0.85rem;
+  margin-left: 2px;
+  white-space: nowrap;
+  color: var(--ifm-color-emphasis-300) !important;
+  opacity: 1;
+}
+
+/* ============================ DARK MODE ============================ */
+
+/* Dark mode: background and border for search button */
+html[data-theme='dark'] .navbar-search-item button {
+  background: var(--ifm-color-emphasis-100) !important;
+  border-color: var(--ifm-color-emphasis-200) !important;
+}
+
+/* Dark mode hover: keep same animation, slightly stronger shadow */
+html[data-theme='dark'] .navbar-search-item button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.45);
+  border-color: var(--ifm-color-primary) !important;
+}
+
+/* Dark mode text + icon color */
+html[data-theme='dark'] .navbar-search-item button,
+html[data-theme='dark'] .navbar-search-item button * {
+  color: var(--ifm-color-emphasis-300) !important;
+  fill: var(--ifm-color-emphasis-300) !important;
+  opacity: 1 !important;
+}
+
+/* ========================================================= */
+/* ====== ANIMATED HOVER FOR RIGHT-HAND TOC (in-doc) ======= */
+/* ========================================================= */
+
+/* TOC items */
+.table-of-contents__link {
+  transition: transform 0.15s ease, padding-left 0.15s ease, color 0.15s ease;
+}
+
+/* Hover effect */
+.table-of-contents__link:hover {
+  padding-left: 6px;                  /* small offset */
+  transform: translateX(3px);         /* smooth slide */
+  color: var(--ifm-color-primary);    /* matches primary color */
+}
+
+/* Active TOC item */
+.table-of-contents__link--active {
+  font-weight: 600;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: 6px;
+  color: var(--ifm-color-primary);
+}
+
+/* ========================================================= */
+/* ===== UNIFIED STYLE FOR LEFT DOCS SIDEBAR (MENU) ======== */
+/* ========================================================= */
+
+/* Add some breathing room to the left sidebar menu */
+.theme-doc-sidebar-menu {
+  padding: 0.35rem 0.25rem;
+}
+
+/* Base style for ALL sidebar links (normal and collapsible items) */
+.theme-doc-sidebar-menu .menu__link {
+  border-radius: 8px;          /* soft corners, not pill-shaped */
+  padding: 6px 10px;
+  margin: 2px 4px;             /* keep away from sidebar edge */
+  font-size: 0.92rem;
+  font-weight: 400;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* Ensure collapsible sections (e.g. "Workflow steps") look like others */
+.theme-doc-sidebar-menu .menu__list-item-collapsible > .menu__link {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.92rem;
+}
+
+/* Hover: light gray + slight slide to the right */
+.theme-doc-sidebar-menu .menu__link:hover {
+  background: var(--ifm-color-emphasis-100);  /* light gray */
+  transform: translateX(3px);
+}
+
+/* Dark mode hover: slightly stronger gray */
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* Active state: current page item (applies to any kind of item) */
+.theme-doc-sidebar-menu .menu__link--active {
+  background: var(--ifm-color-emphasis-100);  /* slightly stronger gray */
+  font-weight: 600;
+  border-left: none;                          /* ensure no left bar remains */
+}
+
+/* Dark mode: active item with darker tone, similar to code background */
+html[data-theme='dark'] .theme-doc-sidebar-menu .menu__link--active {
+  background: #1d2026;                        /* a bit darker than code bg */
+  color: var(--ifm-color-emphasis-900);
+}
+
+/* Optional: caret (collapsible arrow) neutral and subtle */
+.theme-doc-sidebar-menu .menu__caret {
+  opacity: 0.8;
+}
+
+.theme-doc-sidebar-menu .menu__caret:hover {
+  opacity: 1;
+}
+
+
+
+/* =============================================================== */
+/* ===== NAVBAR LINKS HOVER (Documentation, Blog, etc.) ========= */
+/* =============================================================== */
+
+@media screen and (min-width: 997px) {
+  /* Base state for navbar text links */
+  .navbar__link {
+    display: inline-block; /* needed so transform works nicely */
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+  }
+
+  /* Hover: slight scale + color accent */
+  .navbar__link:hover {
+    transform: scale(1.07);
+    color: var(--ifm-color-primary);
+  }
+}
+
+/* MICRO-ANIMATION FOR NAVBAR LOGO (SUPER SUBTLE) */
+.navbar__brand:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease-out;
+}
+
+
+/* ========================================= */
+/*  ncRNAlab circular logo button (navbar)   */
+/* ========================================= */
+
+.header-lab-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  transition: background var(--ifm-transition-fast), transform 0.15s ease-out;
+}
+
+/* Logo icon (light mode) */
+.header-lab-link::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url('/img/ncrnalab_small_logo.svg') no-repeat center / contain;
+}
+
+/* Hover style (same as GitHub) */
+.header-lab-link:hover {
+  background: var(--ifm-color-emphasis-200);
+  transform: scale(1.05);
+}
+
+/* Dark mode logo */
+html[data-theme='dark'] .header-lab-link::before {
+  background-image: url('/img/ncrnalab_small_logo_dark.svg');
+}
+
+/* =============================== */
+/* Docs version dropdown (navbar)  */
+/* =============================== */
+
+/* Botón del selector de versión */
+.navbar__item--docs-version > .navbar__link {
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+
+  border: 1px solid transparent;
+  background: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    border-color 0.18s ease-out,
+    background 0.18s ease-out;
+}
+
+/* Iconito ▼ (si lo hay) un poco más discreto */
+.navbar__item--docs-version > .navbar__link svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+}
+
+/* Hover: micro-scale + borde moradito suave */
+.navbar__item--docs-version > .navbar__link:hover {
+  transform: translateY(-1px) scale(1.03);
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-0);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.12);
+}
+
+/* Modo oscuro: fondo un pelín más marcado */
+html[data-theme='dark'] .navbar__item--docs-version > .navbar__link:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* Menú del dropdown de versión */
+.navbar__item--docs-version .dropdown__menu {
+  border-radius: 12px;
+  margin-top: 6px;
+
+  /* Animación inicial (oculto) */
+  transform-origin: top right;
+  transform: translateY(-6px) scale(0.97);
+  opacity: 0;
+  pointer-events: none;
+
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.16);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+/* Cuando está abierto: Docusaurus añade .dropdown__menu--show */
+.navbar__item--docs-version .dropdown__menu--show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Opcional: items internos un pelín más redondeados */
+.navbar__item--docs-version .dropdown__link {
+  border-radius: 8px;
+}
+
+/* =============================== */
+/*  MODAL DE BÚSQUEDA (estética)   */
+/* =============================== */
+
+/* Contenedor general del modal */
+.aa-DetachedContainer--modal {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;              /* sin transparencia */
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25) !important;
+  border: none !important;                     /* sin borde morado */
+}
+
+/* Modo oscuro */
+html[data-theme='dark'] .aa-DetachedContainer--modal {
+  background: #1f2127 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Contenedor del formulario: sin bordes ni sombras extra */
+.aa-DetachedFormContainer,
+.aa-Form,
+.aa-Form:focus-within {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Más compacto en vertical */
+.aa-DetachedFormContainer {
+  padding-left: 0 !important;
+}
+
+.aa-Form {
+  padding: 0.25rem 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem !important; /* un poco menos de espacio entre barra y Cancel */
+}
+
+/* Wrapper del input = “píldora” interior */
+.aa-InputWrapper {
+  background: #f7f7f8 !important;
+  border-radius: 16px !important;
+
+  /* altura + compacta y más ancha */
+  height: 44px !important;
+  padding-left: 0.2rem !important;
+
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+
+  display: flex;
+  align-items: center;
+  flex: 1 !important;          /* ocupa todo el ancho disponible */
+  max-width: none !important;
+
+  /* 🔹 desplazamos la píldora hacia la izquierda
+     para “comernos” el espacio de la lupa */
+  margin-left: -2.3rem !important;
+}
+
+/* Modo oscuro para la píldora */
+html[data-theme='dark'] .aa-InputWrapper {
+  background: #2a2d35 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Solo el wrapper se “ilumina” al enfocar */
+.aa-InputWrapper:focus-within {
+  border-color: var(--ifm-color-primary) !important;
+  box-shadow: 0 0 0 1px var(--ifm-color-primary) !important;
+}
+
+/* Input real */
+.aa-Input {
+  border: none !important;
+  background: transparent !important;
+  font-size: 1.05rem !important;
+  padding: 0 !important;
+  padding-left: 0.35rem !important;
+  width: 100% !important;
+  line-height: 1 !important;
+}
+
+.aa-Input:focus {
+  outline: none !important;
+}
+
+/* Prefijo/sufijo del input (iconos) */
+.aa-InputWrapperPrefix,
+.aa-InputWrapperSuffix {
+  display: flex;
+  align-items: center;
+}
+
+/* 🔹 anulamos padding/margen del contenedor de la lupa
+   para que no genere hueco extra */
+.aa-InputWrapperPrefix {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Iconos algo más pequeños para encajar en la altura */
+.aa-InputWrapperPrefix svg,
+.aa-InputWrapperSuffix svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Botón CANCEL más discreto y alineado */
+.aa-DetachedCancelButton {
+  font-size: 0.95rem !important;
+  padding: 0 0.25rem !important;
+  margin-left: 0.5rem !important;
+  opacity: 0.85;
+}
+
+/* ================================================================= */
+/*                         DARK MODE SEARCH                          */
+/* ================================================================= */
+
+html[data-theme='dark'] {
+
+  /* Color del texto (placeholder, input, Cancel) */
+  --search-dark-text: rgba(255,255,255,0.80);
+
+  /* Fondo general del modal */
+  --search-dark-bg: #1f2127;
+
+  /* Fondo ligeramente más claro para la "píldora" */
+  --search-dark-bg-light: #262830;
+}
+
+/* ---------------- PLACEHOLDER & TEXT ---------------- */
+
+html[data-theme='dark'] .aa-Input::placeholder {
+  color: var(--search-dark-text) !important;
+  opacity: 0.8 !important;
+}
+
+html[data-theme='dark'] .aa-Input {
+  color: var(--search-dark-text) !important;
+}
+
+html[data-theme='dark'] .aa-DetachedCancelButton {
+  color: var(--search-dark-text) !important;
+  opacity: 0.9 !important;
+}
+
+/* ---------------- FONDOS UNIFORMES ---------------- */
+
+/* Contenedor general del modal */
+html[data-theme='dark'] .aa-DetachedContainer--modal {
+  background: var(--search-dark-bg) !important;
+}
+
+/* Zona superior donde está Search + X + Cancel */
+html[data-theme='dark'] .aa-DetachedFormContainer,
+html[data-theme='dark'] .aa-Form {
+  background: var(--search-dark-bg) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* "Píldora" del input */
+html[data-theme='dark'] .aa-InputWrapper {
+  background: var(--search-dark-bg-light) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* Panel general de resultados */
+html[data-theme='dark'] .aa-PanelLayout,
+html[data-theme='dark'] .aa-Panel {
+  background: var(--search-dark-bg) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Cada resultado */
+html[data-theme='dark'] .aa-Item,
+html[data-theme='dark'] .aa-Source,
+html[data-theme='dark'] .aa-SourceNoResults {
+  background: var(--search-dark-bg) !important;
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* Resultado seleccionado */
+html[data-theme='dark'] .aa-Item[aria-selected="true"] {
+  background: var(--search-dark-bg-light) !important;
+}
+
+/* Subtítulo de cada resultado (Output, Usage, etc.) */
+html[data-theme='dark'] .aa-Item .aa-ItemDescription {
+  color: rgba(255,255,255,0.55) !important;
+}
+
+/* ================================================================= */
+/*                 FIX EXTRA: QUITAR LA FRANJA NEGRA                 */
+/* ================================================================= */
+
+/* Asegurar que no quede ningún fondo negro detrás de la searchbar */
+html[data-theme='dark'] .aa-Form {
+  background: var(--search-dark-bg) !important;
+}
+
+/* ================================================================= */
+/*               FIX EXTRA: QUITAR EL BORDE AZUL DE ABAJO            */
+/* ================================================================= */
+
+/* Es el gradient azul oscuro que mete el plugin */
+html[data-theme='dark'] .aa-GradientBottom {
+  display: none !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* =============================== */
+/*  Dark mode: recolor action icons */
+/* =============================== */
+
+html[data-theme='dark'] .aa-InputWrapperSuffix svg,
+html[data-theme='dark'] .aa-ItemActionButton svg {
+  stroke: none !important;
+  fill: var(--ifm-color-primary) !important;
+  opacity: 1 !important;
+}
+
+/* ============================== */
+/* ANIMACIÓN DE APARICIÓN (MODAL) */
+/* ============================== */
+
+/* Modal al abrirse: ligera traslación + escala + fade-in */
+.aa-DetachedContainer--modal {
+  animation: searchModalIn 0.65s ease-out;
+  transform-origin: top center;
+}
+
+/* Keyframes de la animación */
+@keyframes searchModalIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ================================================================= */
+/*                      ABOUT PAGE [DARK MODE]                       */
+/* ================================================================= */
+
+html[data-theme='dark'] .heroSection {
+  background-image:
+    linear-gradient(
+      180deg,
+      #2a1a36 0%,    /* violeta oscuro equivalente */
+      #1b1b1d 100%  /* tu color objetivo final */
+    ) !important;
+  background-size: cover !important;
+  color: #ffffff !important;
+}
+
+/* HERO text always white */
+html[data-theme='dark'] .heroSection h1,
+html[data-theme='dark'] .heroSection p {
+  color: #ffffff !important;
+}
+
+
+html[data-theme='dark'] .cardContainer {
+  background: #242526 !important;    /* <- actualizado */
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  color: #ffffff !important;         /* <- actualizado */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.40) !important;
+}
+
+/* CARD text always white */
+html[data-theme='dark'] .cardContainer h2,
+html[data-theme='dark'] .cardContainer p {
+  color: #ffffff !important;
+}
+
+
+html[data-theme='dark'] .cardSection:hover .cardContainer {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.55) !important;
+}
+
+html[data-theme='dark'] .cardImage {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.30) !important;
+}
+
+html[data-theme='dark'] .cardSection:hover .cardImage {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45) !important;
+}
+
+/* Cambiar logo del hero en modo dark */
+html[data-theme='dark'] .heroLogo {
+  content: url('/img/logo_dark.svg') !important;
+}

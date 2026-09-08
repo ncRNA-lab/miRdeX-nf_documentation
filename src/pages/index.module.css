@@ -1,0 +1,187 @@
+/* =========================
+   LAYOUT PRINCIPAL
+   ========================= */
+.main {
+  padding: 0 0 3rem; /* sin padding-top para que el hero llene la primera vista */
+}
+
+/* === SECCIÓN HERO === */
+.hero {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  max-width: min(96vw, 1680px);
+  margin: 0 auto;
+  display: grid;
+  align-items: center;   /* centra verticalmente las dos columnas */
+  justify-items: start;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  /* Empuja TODO el contenido un pelín hacia abajo (ópticamente centrado) */
+  padding: clamp(12px, 4vh, 56px) 0.75rem 0;
+}
+
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: minmax(420px, 560px) 1fr;
+    gap: 3rem;
+    padding: clamp(12px, 4vh, 56px) 1rem 0; /* mismo “empuje” en desktop */
+  }
+}
+
+/* COLUMNA IZQUIERDA (logo + texto + botón) */
+.left {
+  display: grid;
+  align-content: center;  /* centrado vertical real */
+  gap: 1rem;
+  justify-items: start;
+}
+
+.logoWrap {
+  width: clamp(220px, 26vw, 520px);
+  /* opcional: mover un pelín a la izquierda
+  margin-left: -15px; */
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  line-height: 1.4;
+  color: var(--ifm-color-emphasis-800);
+  max-width: 60ch;
+}
+
+.buttonRow {
+  margin-top: 1.25rem;
+}
+
+/* =========================
+   HERO CTA BUTTON ("Get started")
+   ========================= */
+
+/* Outer clickable area (Link) */
+.getStarted {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 600;
+
+  width: 12rem;
+  height: 3rem;
+}
+
+/* Circle / pill */
+.getStartedCircle {
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--ifm-color-primary); /* “bola” coloreada */
+  border-radius: 1.625rem;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+/* Icon base inside the circle */
+.getStartedIcon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #ffffff;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+/* Horizontal bar + arrow head */
+.getStartedArrow {
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+.getStartedArrow::before {
+  position: absolute;
+  content: '';
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #ffffff;
+  border-right: 0.125rem solid #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Text */
+.getStartedText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+
+  /* same color as the circle at rest */
+  color: var(--ifm-color-primary);
+
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+}
+
+/* Dark mode: same primary text initially */
+html[data-theme='dark'] .getStartedText {
+  color: var(--ifm-color-primary);
+}
+
+/* Hover interactions */
+.getStarted:hover .getStartedCircle {
+  width: 100%;
+}
+
+.getStarted:hover .getStartedArrow {
+  background: #ffffff;
+  transform: translate(1rem, 0);
+}
+
+.getStarted:hover .getStartedText {
+  color: #ffffff;
+}
+
+/* COLUMNA DERECHA (metromap) */
+.right {
+  width: 100%;
+  align-self: stretch;
+}
+
+.pipeline {
+  display: block;
+  width: 95%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media (max-width: 959px) {
+  .right { order: 2; }
+  .left  { order: 1; }
+  .logoWrap { width: clamp(200px, 50vw, 360px); }
+  .tagline { font-size: clamp(0.95rem, 4.5vw, 1.2rem); }
+}
