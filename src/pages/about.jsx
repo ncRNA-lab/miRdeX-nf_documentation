@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './about.module.css';
 import MirnaAgoLight from '@site/static/img/miRNA_ago.svg';
 import MirnaAgoDark from '@site/static/img/miRNA_ago_dark.svg';
@@ -52,13 +53,13 @@ export default function About() {
 
             <div className={styles.heroLogoWrap}>
               <img
-                src="/img/logo.svg"
+                src={useBaseUrl('/img/logo.svg')}
                 alt="miRdeX-nf logo"
                 className={`${styles.heroLogoLarge} ${styles.lightOnly}`}
               />
 
               <img
-                src="/img/logo_dark.svg"
+                src={useBaseUrl('/img/logo_dark.svg')}
                 alt="miRdeX-nf logo"
                 className={`${styles.heroLogoLarge} ${styles.darkOnly}`}
               />
@@ -179,7 +180,7 @@ export default function About() {
               <div className={`${styles.floatImgWrap} ${styles.labFigureWrap}`}>
                 <div className={styles.labFigureCard}>
                   <img
-                    src="/img/lab_photo.jpg"
+                    src={useBaseUrl('/img/lab_photo.jpg')}
                     alt="ncRNA-lab research group"
                     className={styles.labFigure}
                   />
