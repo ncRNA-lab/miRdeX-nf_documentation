@@ -6,7 +6,7 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
-const baseUrl = '/miRdeX-nf_documentation/';
+const baseUrl = '/miRdeX-nf-docs/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -22,7 +22,7 @@ const config = {
   baseUrl: baseUrl,
 
   organizationName: 'ncRNA-lab',
-  projectName: 'miRdeX-nf_documentation',
+  projectName: 'miRdeX-nf-docs',
 
   trailingSlash: false,
 
@@ -44,7 +44,7 @@ const config = {
           sidebarPath: './sidebars.js',
 
           editUrl:
-            'https://github.com/ncRNA-lab/miRdeX-nf_documentation/edit/main/',
+            'https://github.com/ncRNA-lab/miRdeX-nf-docs/edit/main/',
 
           versions: {
             current: {
